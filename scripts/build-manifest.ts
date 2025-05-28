@@ -374,12 +374,27 @@ async function extractExifData(
       return null
     }
 
+    let startIndex = 0
+    for (let i = 0; i < metadata.exif.length; i++) {
+      if (
+        metadata.exif.toString('ascii', i, i + 2) === 'II' ||
+        metadata.exif.toString('ascii', i, i + 2) === 'MM'
+      ) {
+        startIndex = i
+        break
+      }
+      if (metadata.exif.toString('ascii', i, i + 4) === 'Exif') {
+        startIndex = i
+        break
+      }
+    }
+    const exifBuffer = metadata.exif.subarray(startIndex)
+
     // 使用 exif-reader 解析 EXIF 数据
-    const exifData = exifReader(metadata.exif)
+    const exifData = exifReader(exifBuffer)
 
     if (exifData.Photo?.MakerNote) {
       const recipe = getRecipe(exifData.Photo.MakerNote)
-
       ;(exifData as any).FujiRecipe = recipe
     }
 
