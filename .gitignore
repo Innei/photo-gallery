@@ -3,6 +3,7 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
 
 public/og-image-*.png
 test-svg-font-rendering.png

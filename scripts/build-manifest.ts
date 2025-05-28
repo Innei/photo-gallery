@@ -173,6 +173,7 @@ async function generateThumbnail(
     }
 
     await sharp(imageBuffer)
+      .rotate() // 自动根据 EXIF 方向信息旋转
       .resize(600, 600, {
         fit: 'inside',
         withoutEnlargement: true,
@@ -491,26 +492,34 @@ function extractPhotoInfo(key: string, exifData?: Exif | null): PhotoInfo {
 }
 
 // 生成 S3 公共 URL
+// 生成 S3 公共 URL
 function generateS3Url(key: string): string {
   const bucketName = env.S3_BUCKET_NAME
 
   // 如果设置了自定义域名，直接使用自定义域名
   if (env.S3_CUSTOM_DOMAIN) {
     const customDomain = env.S3_CUSTOM_DOMAIN.replace(/\/$/, '') // 移除末尾的斜杠
-    return `${customDomain}/${bucketName}/${key}`
+    return `${customDomain}/${key}` // 自定义域名不需要 bucketName
   }
 
-  // 如果使用自定义端点，构建相应的 URL
   const endpoint = env.S3_ENDPOINT
 
   // 检查是否是标准 AWS S3 端点
   if (endpoint.includes('amazonaws.com')) {
-    return `https://${bucketName}.s3.${env.S3_REGION}.amazonaws.com/${bucketName}/${key}`
+    return `https://${bucketName}.s3.${env.S3_REGION}.amazonaws.com/${key}`
   }
 
-  // 对于自定义端点（如 MinIO 等）
+  // 检查是否是 Cloudflare R2 端点
+  if (endpoint.includes('r2.cloudflarestorage.com')) {
+    // Cloudflare R2 公共 URL 格式: https://pub-{hash}.r2.dev/{key}
+    // 或者使用自定义子域名: https://{bucketName}.{accountId}.r2.cloudflarestorage.com/{key}
+    const baseUrl = endpoint.replace(/\/$/, '') // 移除末尾的斜杠
+    return `${baseUrl}/${key}` // R2 端点已经包含 bucket 信息
+  }
+
+  // 对于其他自定义端点（如 MinIO 等）
   const baseUrl = endpoint.replace(/\/$/, '') // 移除末尾的斜杠
-  return `${baseUrl}/${bucketName}/${key}`
+  return `${baseUrl}/${bucketName}/${key}` // 其他端点需要 bucketName
 }
 
 // 主函数

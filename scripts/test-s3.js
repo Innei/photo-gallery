@@ -1,11 +1,14 @@
+import 'dotenv/config'
+
 import { ListObjectsV2Command, S3Client } from '@aws-sdk/client-s3'
 
 // AWS S3 配置
-const AWS_REGION = process.env.AWS_REGION || 'us-east-1'
-const { AWS_ACCESS_KEY_ID } = process.env
-const { AWS_SECRET_ACCESS_KEY } = process.env
-const { S3_BUCKET_NAME } = process.env
+const AWS_REGION = process.env.S3_REGION || 'us-east-1'
+const AWS_ACCESS_KEY_ID = process.env.S3_ACCESS_KEY_ID || ''
+const AWS_SECRET_ACCESS_KEY = process.env.S3_SECRET_ACCESS_KEY || ''
+const S3_BUCKET_NAME = process.env.S3_BUCKET_NAME || ''
 const S3_PREFIX = process.env.S3_PREFIX || 'photos/'
+const S3_ENDPOINT = process.env.S3_ENDPOINT || ''
 
 if (!AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY || !S3_BUCKET_NAME) {
   console.error(
@@ -17,6 +20,7 @@ if (!AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY || !S3_BUCKET_NAME) {
 // 创建 S3 客户端
 const s3Client = new S3Client({
   region: AWS_REGION,
+  endpoint: S3_ENDPOINT,
   credentials: {
     accessKeyId: AWS_ACCESS_KEY_ID,
     secretAccessKey: AWS_SECRET_ACCESS_KEY,
