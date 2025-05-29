@@ -74,7 +74,7 @@
     "@types/react-dom": "19.1.5",
     "@vitejs/plugin-react": "^4.5.0",
     "babel-plugin-react-compiler": "19.1.0-rc.2",
-    "code-inspector-plugin": "0.20.11",
+    "code-inspector-plugin": "0.20.12",
     "daisyui": "5.0.40",
     "eslint": "9.27.0",
     "eslint-config-hyoban": "4.0.7",
