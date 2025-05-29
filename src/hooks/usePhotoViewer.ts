@@ -13,15 +13,25 @@ export const usePhotos = () => {
   const { sortOrder } = useAtomValue(gallerySettingAtom)
 
   const masonryItems = useMemo(() => {
-    const sortedPhotos = data.sort((a, b) => {
-      const aComparedDate =
-        (a.exif.Photo?.DateTimeOriginal as unknown as string) || a.lastModified
-      const bComparedDate =
-        (b.exif.Photo?.DateTimeOriginal as unknown as string) || b.lastModified
-      if (sortOrder === 'asc') {
-        return aComparedDate.localeCompare(bComparedDate)
+    const sortedPhotos = [...data].sort((a, b) => {
+      let aDateStr = ''
+      let bDateStr = ''
+
+      if (a.exif && a.exif.Photo && a.exif.Photo.DateTimeOriginal) {
+        aDateStr = a.exif.Photo.DateTimeOriginal as unknown as string
+      } else {
+        aDateStr = a.lastModified
       }
-      return bComparedDate.localeCompare(aComparedDate)
+
+      if (b.exif && b.exif.Photo && b.exif.Photo.DateTimeOriginal) {
+        bDateStr = b.exif.Photo.DateTimeOriginal as unknown as string
+      } else {
+        bDateStr = b.lastModified
+      }
+
+      return sortOrder === 'asc'
+        ? aDateStr.localeCompare(bDateStr)
+        : bDateStr.localeCompare(aDateStr)
     })
 
     return sortedPhotos

@@ -49,6 +49,17 @@ export const PhotoMasonryItem = ({
   // 格式化 EXIF 数据
   const formatExifData = () => {
     const { exif } = data
+
+    // 安全处理：如果 exif 不存在或为空，则返回空对象
+    if (!exif) {
+      return {
+        focalLength35mm: null,
+        iso: null,
+        shutterSpeed: null,
+        aperture: null,
+      }
+    }
+
     const photo = exif.Photo || {}
     const image = exif.Image || {}
 
