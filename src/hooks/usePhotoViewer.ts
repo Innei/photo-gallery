@@ -13,7 +13,7 @@ export const usePhotos = () => {
   const { sortOrder } = useAtomValue(gallerySettingAtom)
 
   const masonryItems = useMemo(() => {
-    const sortedPhotos = data.sort((a, b) => {
+    const sortedPhotos = data.toSorted((a, b) => {
       const aComparedDate =
         (a.exif.Photo?.DateTimeOriginal as unknown as string) || a.lastModified
       const bComparedDate =
