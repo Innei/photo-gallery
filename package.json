@@ -78,7 +78,7 @@
     "@vitejs/plugin-react": "^4.5.0",
     "babel-plugin-react-compiler": "19.1.0-rc.2",
     "code-inspector-plugin": "0.20.11",
-    "daisyui": "5.0.40",
+    "daisyui": "5.0.43",
     "eslint": "9.27.0",
     "eslint-config-hyoban": "4.0.7",
     "lint-staged": "16.1.0",
