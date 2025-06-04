@@ -1,9 +1,15 @@
+import { existsSync, readFileSync } from 'node:fs'
 import os from 'node:os'
 
-import { env } from './env.js'
 import type { StorageConfig } from './apps/web/src/core/storage/interfaces.js'
+import { env } from './env.js'
 
 export interface BuilderConfig {
+  // 远程仓库的地址
+  repo: {
+    enable: boolean
+    url: string
+  }
   // 存储配置
   storage: StorageConfig
 
@@ -69,6 +75,11 @@ export interface BuilderConfig {
 }
 
 export const defaultBuilderConfig: BuilderConfig = {
+  repo: {
+    enable: false,
+    url: '',
+  },
+
   storage: {
     provider: 's3',
     bucket: env.S3_BUCKET_NAME,
@@ -106,41 +117,22 @@ export const defaultBuilderConfig: BuilderConfig = {
   },
 }
 
-// 用户可以在这里自定义配置
-export const builderConfig: BuilderConfig = {
-  ...defaultBuilderConfig,
-  // 用户自定义配置可以在这里覆盖默认配置
-  // 例如：
-  // options: {
-  //   ...defaultBuilderConfig.options,
-  //   defaultConcurrency: 8,
-  //   maxPhotos: 5000,
-  // },
-  // logging: {
-  //   ...defaultBuilderConfig.logging,
-  //   verbose: true,
-  //   level: 'debug',
-  // },
+const readUserConfig = () => {
+  const isUserConfigExist = existsSync(
+    new URL('builder.config.json', import.meta.url),
+  )
+  if (!isUserConfigExist) {
+    return defaultBuilderConfig
+  }
 
-  // 启用多进程集群模式以发挥多核心优势：
-  // performance: {
-  //   ...defaultBuilderConfig.performance,
-  //   worker: {
-  //     ...defaultBuilderConfig.performance.worker,
-  //     useClusterMode: true,
-  //   },
-  // },
+  const userConfig = JSON.parse(
+    readFileSync(new URL('builder.config.json', import.meta.url), 'utf-8'),
+  ) as BuilderConfig
 
-  // 如果要使用 GitHub 存储，取消注释下面的配置：
-  // storage: {
-  //   provider: 'github',
-  //   github: {
-  //     owner: 'your-username',
-  //     repo: 'your-photo-repo',
-  //     branch: 'main',
-  //     token: process.env.GITHUB_TOKEN,
-  //     path: 'photos',
-  //     useRawUrl: true,
-  //   },
-  // },
+  return {
+    ...defaultBuilderConfig,
+    ...userConfig,
+  }
 }
+
+export const builderConfig: BuilderConfig = readUserConfig()

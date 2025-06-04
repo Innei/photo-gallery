@@ -12,3 +12,6 @@ thomas-x2d-xcd-25v-1.webp
 
 config.json
 .env
+builder.config.json
+
+apps/web/assets-git

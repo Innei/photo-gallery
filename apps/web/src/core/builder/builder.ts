@@ -43,6 +43,7 @@ export class PhotoGalleryBuilder {
     if (!userConfig) return baseConfig
 
     return {
+      repo: { ...baseConfig.repo, ...userConfig.repo },
       storage: { ...baseConfig.storage, ...userConfig.storage },
       options: { ...baseConfig.options, ...userConfig.options },
       logging: { ...baseConfig.logging, ...userConfig.logging },

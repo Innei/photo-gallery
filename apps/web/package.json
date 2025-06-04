@@ -9,9 +9,9 @@
   },
   "scripts": {
     "analyze": "analyzer=1 vite build",
-    "build": "vite build",
+    "build": "tsx scripts/build.ts",
     "build:manifest": "tsx src/core/cli.ts",
-    "dev": "vite --host",
+    "dev": "tsx scripts/dev.ts",
     "format": "prettier --write \"src/**/*.ts\" ",
     "lint": "eslint --fix",
     "serve": "vite preview"
@@ -80,6 +80,7 @@
     "babel-plugin-react-compiler": "19.1.0-rc.2",
     "code-inspector-plugin": "0.20.12",
     "daisyui": "5.0.43",
+    "execa": "9.6.0",
     "postcss": "8.5.4",
     "postcss-import": "16.1.0",
     "postcss-js": "4.0.1",
