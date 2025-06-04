@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "pnpm --filter @photo-gallery/web build",
+    "build:update-remote-repo": "sh scripts/build-update-remote-repo.sh",
     "dev": "pnpm --filter @photo-gallery/web dev",
     "extract:font": "tsx scripts/extract-font-glyphs.ts",
     "format": "prettier --write \"src/**/*.ts\" ",
