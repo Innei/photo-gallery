@@ -30,9 +30,15 @@ importers:
       lint-staged:
         specifier: 16.1.0
         version: 16.1.0
+      opentype.js:
+        specifier: 1.3.4
+        version: 1.3.4
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      sharp:
+        specifier: 0.34.2
+        version: 0.34.2
       simple-git-hooks:
         specifier: 2.13.0
         version: 2.13.0
@@ -159,9 +165,6 @@ importers:
       ofetch:
         specifier: 1.4.1
         version: 1.4.1
-      opentype.js:
-        specifier: 1.3.4
-        version: 1.3.4
       react:
         specifier: 19.1.0
         version: 19.1.0

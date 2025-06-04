@@ -4,6 +4,10 @@ import { env } from '@env'
 
 // 创建 S3 客户端
 function createS3Client(): S3Client {
+  if (!env.S3_ACCESS_KEY_ID || !env.S3_SECRET_ACCESS_KEY) {
+    throw new Error('S3_ACCESS_KEY_ID and S3_SECRET_ACCESS_KEY are required')
+  }
+
   const s3ClientConfig: S3ClientConfig = {
     region: env.S3_REGION,
     credentials: {
