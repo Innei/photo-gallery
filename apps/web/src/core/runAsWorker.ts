@@ -1,11 +1,12 @@
-import process from 'process'
+import process from 'node:process'
+
 import { logger } from './logger'
 import type { PhotoManifestItem } from './types/photo'
 import type {
-  TaskMessage,
-  TaskResult,
   BatchTaskMessage,
   BatchTaskResult,
+  TaskMessage,
+  TaskResult,
 } from './worker/cluster-pool'
 
 // Worker 进程处理逻辑
