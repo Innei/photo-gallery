@@ -21,7 +21,7 @@
   "dependencies": {
     "@t3-oss/env-core": "0.13.6",
     "dotenv": "16.5.0",
-    "zod": "3.25.49"
+    "zod": "3.25.51"
   },
   "devDependencies": {
     "@innei/prettier": "0.15.0",

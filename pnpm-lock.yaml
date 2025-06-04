@@ -10,13 +10,13 @@ importers:
     dependencies:
       '@t3-oss/env-core':
         specifier: 0.13.6
-        version: 0.13.6(typescript@5.8.3)(zod@3.25.49)
+        version: 0.13.6(typescript@5.8.3)(zod@3.25.51)
       dotenv:
         specifier: 16.5.0
         version: 16.5.0
       zod:
-        specifier: 3.25.49
-        version: 3.25.49
+        specifier: 3.25.51
+        version: 3.25.51
     devDependencies:
       '@innei/prettier':
         specifier: 0.15.0
@@ -104,7 +104,7 @@ importers:
         version: 4.6.0(react@19.1.0)
       '@t3-oss/env-core':
         specifier: 0.13.6
-        version: 0.13.6(typescript@5.8.3)(zod@3.25.49)
+        version: 0.13.6(typescript@5.8.3)(zod@3.25.51)
       '@tanstack/react-query':
         specifier: 5.80.2
         version: 5.80.2(react@19.1.0)
@@ -205,8 +205,8 @@ importers:
         specifier: 3.1.1
         version: 3.1.1(react@19.1.0)
       zod:
-        specifier: 3.25.49
-        version: 3.25.49
+        specifier: 3.25.51
+        version: 3.25.51
       zustand:
         specifier: 5.0.5
         version: 5.0.5(@types/react@19.1.6)(immer@10.1.1)(react@19.1.0)(use-sync-external-store@1.5.0(react@19.1.0))
@@ -4726,8 +4726,8 @@ packages:
     peerDependencies:
       zod: ^3.24.4
 
-  zod@3.25.49:
-    resolution: {integrity: sha512-JMMPMy9ZBk3XFEdbM3iL1brx4NUSejd6xr3ELrrGEfGb355gjhiAWtG3K5o+AViV/3ZfkIrCzXsZn6SbLwTR8Q==}
+  zod@3.25.51:
+    resolution: {integrity: sha512-TQSnBldh+XSGL+opiSIq0575wvDPqu09AqWe1F7JhUMKY+M91/aGlK4MhpVNO7MgYfHcVCB1ffwAUTJzllKJqg==}
 
   zustand@5.0.5:
     resolution: {integrity: sha512-mILtRfKW9xM47hqxGIxCv12gXusoY/xTSHBYApXozR0HmQv299whhBeeAcRy+KrPPybzosvJBCOmVjq6x12fCg==}
@@ -6843,10 +6843,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@t3-oss/env-core@0.13.6(typescript@5.8.3)(zod@3.25.49)':
+  '@t3-oss/env-core@0.13.6(typescript@5.8.3)(zod@3.25.51)':
     optionalDependencies:
       typescript: 5.8.3
-      zod: 3.25.49
+      zod: 3.25.51
 
   '@tailwindcss/container-queries@0.1.1(tailwindcss@4.1.8)':
     dependencies:
@@ -7869,8 +7869,8 @@ snapshots:
       '@babel/plugin-transform-private-methods': 7.27.1(@babel/core@7.27.1)
       eslint: 9.28.0(jiti@2.4.2)
       hermes-parser: 0.25.1
-      zod: 3.25.49
-      zod-validation-error: 3.4.1(zod@3.25.49)
+      zod: 3.25.51
+      zod-validation-error: 3.4.1(zod@3.25.51)
     transitivePeerDependencies:
       - supports-color
 
@@ -9557,11 +9557,11 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod-validation-error@3.4.1(zod@3.25.49):
+  zod-validation-error@3.4.1(zod@3.25.51):
     dependencies:
-      zod: 3.25.49
+      zod: 3.25.51
 
-  zod@3.25.49: {}
+  zod@3.25.51: {}
 
   zustand@5.0.5(@types/react@19.1.6)(immer@10.1.1)(react@19.1.0)(use-sync-external-store@1.5.0(react@19.1.0)):
     optionalDependencies:
