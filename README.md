@@ -1,5 +1,9 @@
 # Photo Gallery Site
 
+> [!IMPORTANT]
+> 此项目已迁移到 [Iris-Photo-Gallery/Iris](https://github.com/Iris-Photo-Gallery/Iris)。
+
+
 ⚠️警告：此项目多数代码都由 Claude 4 生成，请谨慎使用。
 
 一个现代化的照片画廊网站，支持从 S3 存储自动同步照片，具有瀑布流布局、EXIF 信息展示、缩略图生成等功能。
